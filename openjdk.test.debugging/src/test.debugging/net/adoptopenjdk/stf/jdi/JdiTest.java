@@ -112,12 +112,13 @@ public class JdiTest implements StfPluginInterface {
 
 	public void execute(StfCoreExtension core) throws StfException, IOException {
 		// The trace options are IBM specific and not supported from IBM Java 9 onwards.
-		String traceOptions = "";
+		//String traceOptions = "";
 		JavaVersion jvm = core.env().primaryJvm();
 		
+		/*
 		if (jvm.isIBMJvm() && jvm.isJava8()) {
 			traceOptions = ",trace=PROG+CMD+PACK+DATA";
-		}
+		}*/
 
 		// Run all tests by default but give the option to run a specific test, this is particularly useful for 
 		// debugging/ development, also default the transport method to socket as shared memory is only valid for Windows
@@ -203,7 +204,7 @@ public class JdiTest implements StfPluginInterface {
 						ECHO_ON, 
 						ExpectedOutcome.cleanRun().within("30m"),
 						core.createJavaProcessDefinition()
-						.addJvmOption("-Xrunjdwp:transport=" + transport.option + ",address="  + transportAddress + server + ",timeout=" + PROCESS_TIMEOUT + traceOptions)
+						.addJvmOption("-Xrunjdwp:transport=" + transport.option + ",address="  + transportAddress + server + ",timeout=" + PROCESS_TIMEOUT)
 						.addProjectToClasspath("openjdk.test.debugging")
 						.addJarToClasspath(toolsJar)
 						.runClass(testClass)));
