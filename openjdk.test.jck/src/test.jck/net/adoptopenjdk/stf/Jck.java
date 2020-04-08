@@ -719,7 +719,7 @@ public class Jck implements StfPluginInterface {
 			}
 			
 			// Add the JVM options supplied by the user plus those added in this method to the jtb file option.
-			fileContent += "set jck.env.runtime.testExecute.otherOpts \" " + extraJvmOptions + " \"" + ";\n";
+			//fileContent += "set jck.env.runtime.testExecute.otherOpts \" " + extraJvmOptions + " \"" + ";\n";
 		}
 		
 		// Compiler settings
